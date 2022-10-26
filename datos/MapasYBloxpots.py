@@ -14,6 +14,7 @@ print(f"Número de filas: {filas}")
 #%%Descripcion General del Dataframe
 df.describe()
 
+#grafica de cajas y bigotes
 plt.boxplot(df.describe())
 plt.title("Boxplot Using Matplotlib")
 plt.show()
