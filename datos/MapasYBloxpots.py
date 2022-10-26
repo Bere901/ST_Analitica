@@ -33,7 +33,10 @@ for department in departments:
     plt.ylabel("n de ordenes")
     plt.xlabel("% de compra")
     plt.show()
-    
+
+    plt.boxplot(df[[department]])
+    plt.title("Boxplot Using Matplotlib")
+    plt.show()
 #%%Analisis del tiempo
 df['weekday'].value_counts()
 plt.hist(df[['weekday']])
