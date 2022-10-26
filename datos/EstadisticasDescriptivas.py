@@ -34,4 +34,6 @@ print('---Mediana---')
 print(df.median())
 print('---Moda---')
 print(df.mode())
+print('---Desviacion Estandar---')
+print(df.std())
 # %%
