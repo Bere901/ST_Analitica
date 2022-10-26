@@ -14,6 +14,10 @@ print(f"Número de filas: {filas}")
 #%%Descripcion General del Dataframe
 df.describe()
 
+plt.boxplot(df.describe())
+plt.title("Boxplot Using Matplotlib")
+plt.show()
+
 #%% Informacion sobre los tipos de datos
 df.info()
 
