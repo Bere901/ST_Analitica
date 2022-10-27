@@ -55,4 +55,4 @@ from sklearn.tree import DecisionTreeClassifier, export_text
 
 tree = DecisionTreeClassifier()
 tree.fit(df[["Age", "Annual_Income_(k$)", "Spending_Score"]], kmeans.labels_)
-print(export_text(tree, feature_names=["Age", "Annual_Income_(k$)", "Spending_Score
+print(export_text(tree, feature_names=["Age", "Annual_Income_(k$)", "Spending_Score"]))
