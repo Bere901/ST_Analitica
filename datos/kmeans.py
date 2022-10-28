@@ -8,7 +8,6 @@ from kneed import KneeLocator
 df = pd.read_csv("ulabox_orders_with_categories_partials_2017.csv")
 
 dfp = df[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]]
-
 # %%
 
 ssd = []
@@ -29,16 +28,14 @@ print(f"Number of clusters suggested by knee method: {k}")
 # %%
 
 kmeans = KMeans(n_clusters=k).fit(df[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]])
-sns.scatterplot(data=df, x="Annual_Income_(k$)", y="Spending_Score", hue=kmeans.labels_)
-plt.show()
-
-##### quitar scatter solo trabajar box plot
+#sns.scatterplot(data=df, x="Annual_Income_(k$)", y="Spending_Score", hue=kmeans.labels_)
+#plt.show()
 
 cluster0 = df(KMeans.labels_ == 0)
 cluster0.describe()
-sns.boxplot(data = cluster0, x = "Annual_Income_(k$)")
+sns.boxplot(data = cluster0, x = "Food%")
 
-#####
+# %%
 
 cluster1 = df(KMeans.labels_ = 1)
 cluster1.describe()
