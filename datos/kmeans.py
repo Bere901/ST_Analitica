@@ -1,4 +1,5 @@
 # %%
+import numpy as np;  np.random.seed(42)
 import pandas as pd
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
@@ -6,8 +7,9 @@ import seaborn as sns
 from kneed import KneeLocator
 
 df = pd.read_csv("ulabox_orders_with_categories_partials_2017.csv")
-
 dfp = df[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]]
+
+print(df)
 # %%
 
 ssd = []
@@ -27,24 +29,11 @@ print(f"Number of clusters suggested by knee method: {k}")
 
 # %%
 
-kmeans = KMeans(n_clusters=k).fit(df[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]])
-#sns.scatterplot(data=df, x="Annual_Income_(k$)", y="Spending_Score", hue=kmeans.labels_)
-#plt.show()
+df = pd.DataFrame(data = np.random.random(size=(8,8)), columns = ['Food%', 'Fresh%', 'Drinks%', 'Home%', 'Beauty%', 'Health%', 'Baby%', 'Pets%'])
 
-cluster0 = df(KMeans.labels_ == 0)
-cluster0.describe()
-sns.boxplot(data = cluster0, x = "Food%")
+sns.boxplot(x="variable", y="value", data=pd.melt(df))
 
-# %%
-
-cluster1 = df(KMeans.labels_ = 1)
-cluster1.describe()
-sns.boxplot(data = cluster1, x = "Annual_Income_(k$)")
-
-#####
-
-df['cluster'] = KMeans.labels_
-sns.boxplot(data = df, x = 'cluster', y = "Annual_Income_(k$)")
+plt.show()
 
 # %%
 
