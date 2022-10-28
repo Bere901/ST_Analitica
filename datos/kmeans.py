@@ -12,6 +12,9 @@ dfp = df[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", 
 print(df)
 # %%
 
+df.describe()
+
+# %%
 ssd = []
 ks = range(1,11)
 for k in range(1,11):
@@ -29,6 +32,11 @@ print(f"Number of clusters suggested by knee method: {k}")
 
 # %%
 
+kmeans = KMeans(n_clusters=k).fit(df[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]])
+sns.scatterplot(data=df, x="total_items", y="order", hue=kmeans.labels_)
+plt.show()
+
+# %%
 df = pd.DataFrame(data = np.random.random(size=(8,8)), columns = ['Food%', 'Fresh%', 'Drinks%', 'Home%', 'Beauty%', 'Health%', 'Baby%', 'Pets%'])
 
 sns.boxplot(x="variable", y="value", data=pd.melt(df))
@@ -36,9 +44,8 @@ sns.boxplot(x="variable", y="value", data=pd.melt(df))
 plt.show()
 
 # %%
-
 from sklearn.tree import DecisionTreeClassifier, export_text
 
 tree = DecisionTreeClassifier()
-tree.fit(df[["Age", "Annual_Income_(k$)", "Spending_Score"]], kmeans.labels_)
-print(export_text(tree, feature_names=["Age", "Annual_Income_(k$)", "Spending_Score"]))
+tree.fit(df[['Food%', 'Fresh%', 'Drinks%', 'Home%', 'Beauty%', 'Health%', 'Baby%', 'Pets%']], kmeans.labels_)
+print(export_text(tree, feature_names=['Food%', 'Fresh%', 'Drinks%', 'Home%', 'Beauty%', 'Health%', 'Baby%', 'Pets%']))
