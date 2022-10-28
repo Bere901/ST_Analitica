@@ -35,6 +35,7 @@ print(f"Number of clusters suggested by knee method: {k}")
 kmeans = KMeans(n_clusters=k).fit(df[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]])
 #sns.scatterplot(data=df, x="total_items", y="order", hue=kmeans.labels_)
 #plt.show()
+
 # %%
 df["clusters"] = kmeans.labels_ 
 cluster0 = df[df.clusters == 0]
@@ -55,10 +56,7 @@ sns.boxplot(x="variable", y="value", data=pd.melt(cluster3[["Food%", "Fresh%", "
 # %%
 cluster4 = df[df.clusters == 4]
 sns.boxplot(x="variable", y="value", data=pd.melt(cluster4[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]]))
-# %%
 
-cluster5 = df[df.clusters == 5]
-sns.boxplot(x="variable", y="value", data=pd.melt(cluster5[["Food%", "Fresh%", "Drinks%", "Home%", "Beauty%", "Health%", "Baby%", "Pets%"]]))
 # %%
 df = pd.DataFrame(data = np.random.random(size=(8,8)), columns = ['Food%', 'Fresh%', 'Drinks%', 'Home%', 'Beauty%', 'Health%', 'Baby%', 'Pets%'])
 
